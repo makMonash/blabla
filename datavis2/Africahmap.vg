@@ -1,0 +1,18 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Correlation Heatmap",
+    "width": 200,
+    "height": 200,
+    "data": {
+      "url": "https://raw.githubusercontent.com/makMonash/FIT-3179/main/africa_data.csv"
+    },
+    "mark": "rect",
+    
+    "encoding": {
+      "x": {"field": "columnx", "type": "nominal", "title": "Africa"},
+      "y": {"field": "columny", "type": "nominal", "title": null},
+      "color": {"field": "values", "type": "quantitative", "scale": {"scheme": "viridis"},"title":"Correlation"},
+      "tooltip": {"field": "values", "title": "Correlation"}
+    }
+  }
+  

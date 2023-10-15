@@ -1,0 +1,57 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {
+      "text": "Footlocker Entering India",
+      "fontSize": 24,
+      "anchor": "middle",
+      "font": "Calibri, sans-serif",
+      "color": "black"
+    },
+    "background":"white",
+    "width": 800,
+    "height": {"step": 20},
+    "data": {
+      "url": "https://raw.githubusercontent.com/makMonash/3179/main/Untitled%20spreadsheet%20-%20Sheet1.csv"
+    },
+
+      
+    
+    "layer": [
+      {
+        "mark": {"type": "rect", "tooltip": true},
+        "encoding": {
+          "y": {
+            "field": "Task Name",
+            "title": "Task Name",
+            "type": "nominal",
+            "sort": "-x",
+            "axis": {
+              "labelAngle": 0,
+              "titleFontSize": 16
+            }
+          },
+          "x": {
+            "field": "Start Date",
+            "type": "temporal",
+            "title": "Start Date",
+            "axis": {
+              "labelAngle": 0,
+              "title": "Timeline",
+              "titleFontSize": 16
+            }
+          },
+          "x2": {
+            "field": "End Date",
+            "title": "Deadline"
+          },
+          "color": {
+            "field": "Task Name",
+            "title": "Task Name",
+            "type": "nominal"
+
+          }
+        }
+      }
+    ]
+  }
+  
