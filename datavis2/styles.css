@@ -1,0 +1,90 @@
+* {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.5;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 40px 20px;
+}
+
+.headings-container {
+  width: 60%;
+  padding: 40px;
+}
+
+.h1 {
+  font-size: 4rem;
+}
+.h2 {
+  font-size: 3rem;
+  margin-bottom: 35px;
+}
+
+main {
+  margin-top: 100px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 100px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  text-align: end;
+  justify-content: space-between;
+  column-gap: 50px;
+  margin: 70px;
+}
+
+/* .donut-container {
+  width: 1000px;
+  height: 400px;
+} */
+
+.container p {
+  width: 40%;
+  margin-right: 20px;
+  line-height: 30px;
+  font-weight: bold;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.map-container {
+  padding: 20px;
+}
+
+.options select {
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.chart-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 10px;
+}
+
+.gantt-container p {
+  width: 60%;
+}
+
+.heatmap-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.map-selector {
+  display: flex;
+  align-items: center;
+}

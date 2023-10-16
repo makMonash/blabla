@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FIT 3179 Data Vis 2 Mohib Ali Khan 33370311</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      header {
+        background-color: black;
+        color: white;
+        padding: 20px; /* Optional: Add some padding for better appearance */
+      }
+    </style>
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+    <header>
+      <div class="headings-container">
+        <h1 class="h1">The World of Metro Systems</h1>
+        <h1 class="h2">Unlocking Urban Mobility</h1>
+        <br />
+        <div id="p-tag">
+          <p>
+            Metro systems, a lifeline of urban travel, have reshaped cities and
+            reduced congestion. With 178+ systems and 168 million daily
+            passengers globally, they are an eco-friendly solution for
+            commuters. Let's dive into their transformative role in urban life.
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="container donut-container">
+        <div id="donut"></div>
+        <p>
+          We commence our expedition with a comprehensive regional analysis of
+          Metro Systems. The donut chart provides an elegant visualization that
+          illustrates the distribution of metro systems across distinct regions,
+          encompassing
+          <span style="color: #add8e6">Asia</span>,
+          <span style="color: #ffa07a">Europe</span>,
+          <span style="color: #98fb98">North America</span>,
+          <span style="color: #8a2be2">South America</span>, and
+          <span style="color: #ffd700">Africa</span>.
+        </p>
+      </div>
+
+      <div class="container map-contianer">
+        <div id="map"></div>
+        <p>
+          Moving forward, let's delve into the annual ridership data of
+          countries with Metro Systems. Annual ridership represents the number
+          of passengers using these urban transit networks each year. The
+          choropleth map, adorned with vibrant colors, vividly illustrates these
+          figures for each country. Hover over each nation to uncover the exact
+          numbers and gain insights into the extensive use of metro systems
+          worldwide.
+        </p>
+      </div>
+
+      <div class="container barchart-container">
+        <div class="chart-container">
+          <div id="selectedChart"></div>
+          <div class="options">
+            <select id="chartSelector">
+              <option>Select any of the three categories below</option>
+              <option default value="bar1">
+                Top 5 Metros by Annual Ridership
+              </option>
+              <option value="bar2">Top 5 Metros by Length</option>
+              <option value="bar3">Top 5 Metros by Stations</option>
+            </select>
+          </div>
+        </div>
+        <p>
+          Now, let's turn our gaze to the paramount metro systems, ranked by
+          annual ridership. This ranking offers a glimpse into cities with the
+          most bustling metro networks, complemented by insights into their
+          respective regions.
+        </p>
+      </div>
+
+      <div class="container gantt-container">
+        <div id="gantt"></div>
+        <p>
+          Shifting gears to construction progress, we explore ongoing metro
+          projects. The chart visually narrates the journey from the initiation
+          of construction to the planned opening, offering insights into urban
+          development.
+          <br />
+          Regions:
+          <span style="color: #add8e6">Asia</span>,
+          <span style="color: #ffa07a">Europe</span>,
+          <span style="color: #98fb98">North America</span>,
+          <span style="color: #8a2be2">South America</span>,
+          <span style="color: #ffd700">Africa</span>
+        </p>
+      </div>
+
+      <div class="container heatmap-container">
+        <div class="map-selector">
+          <div id="selectedHeatMap"></div>
+          <div class="options">
+            <select id="HeatSelector">
+              <option>Select a Region</option>
+              <option value="nahmap" selected>North America</option>
+              <option value="sahmap">South America</option>
+              <option value="asiahmap">Asia</option>
+              <option value="africahmap">Africa</option>
+              <option value="eurhmap">Europe</option>
+            </select>
+          </div>
+        </div>
+        <p>
+          <span style="color: #ffffff; font-size: 24px; background-color: black;"
+            >What factors exhibit correlations among Annual Ridership, Length,
+            and Stations of Metro Systems?</span
+            
+          >
+          <br />
+
+          <span style="color: #000000; font-size: 16px"
+          >These correlations provide insights into how different attributes
+          of metro systems are interrelated.</span
+        
+        >
+          
+
+          <br />
+          <span style="color: #32cd32; font-size: 17px"
+            >Positive Correlation:</span
+          >
+          <br />
+          <span style="color: #000000; font-size: 14px; font-style: italic;"
+            >- Length and Stations: A strong positive correlation indicates that
+            as the length of metro systems increases, the number of stations
+            also tends to increase.</span
+          >
+          <br />
+          <span style="color: #ab0808; font-size: 17px"
+            >Negative Correlations:</span
+          >
+          <br />
+          <span style="color: #000000; font-size: 14px; font-style: italic;"
+            >- Length and Annual Ridership: A strong negative correlation
+            suggests that longer metro systems tend to have lower annual
+            ridership.</span
+          >
+          <br />
+          <span style="color: #000000; font-size: 14px; font-style: italic;"
+            >- Stations and Annual Ridership: Another strong negative
+            correlation implies that metro systems with more stations tend to
+            have lower annual ridership.</span
+          >
+          <br />
+         
+        </p>
+      </div>
+
+      <script>
+        var vg_5 = "ganttchart.vg";
+        vegaEmbed("#gantt", vg_5)
+          .then(function (result) {
+            // Access the Vega view instance
+            //(https://vega.github.io/vega/docs/api/view/) as result.view
+          })
+          .catch(console.error);
+
+        document.addEventListener("DOMContentLoaded", function () {
+          const heatSelector = document.getElementById("HeatSelector");
+          const selectedChart = document.getElementById("selectedHeatMap");
+
+          const initialSelectedValue = "nahmap";
+          heatSelector.dispatchEvent(new Event("change"));
+          updateChartDescription(initialSelectedValue);
+          heatSelector.addEventListener("change", function () {
+            const selectedValue = heatSelector.value;
+            let vgFilePath;
+
+            switch (selectedValue) {
+              case "africahmap":
+                vgFilePath = "Africahmap.vg";
+                break;
+              case "asiahmap":
+                vgFilePath = "Asiahmap.vg";
+                break;
+              case "sahmap":
+                vgFilePath = "SAhmap.vg";
+                break;
+              case "nahmap":
+                vgFilePath = "NAhmap.vg";
+                break;
+              case "eurhmap":
+                vgFilePath = "Europehmap.vg";
+                break;
+              default:
+                vgFilePath = "NAhmap.vg";
+            }
+
+            if (vgFilePath) {
+              vegaEmbed(selectedChart, vgFilePath)
+                .then(function (result) {
+                  // Access the Vega view instance as result.view
+                })
+                .catch(console.error);
+            } else {
+              selectedChart.innerHTML = "Select a chart to display.";
+            }
+            updateChartDescription(initialSelectedValue);
+          });
+
+          function updateChartDescription(selectedValue) {
+            switch (selectedValue) {
+              case "africahmap":
+                vgFilePath = "Africahmap.vg";
+                break;
+              case "asiahmap":
+                vgFilePath = "Asiahmap.vg";
+                break;
+              case "sahmap":
+                vgFilePath = "SAhmap.vg";
+                break;
+              case "nahmap":
+                vgFilePath = "NAhmap.vg";
+                break;
+              case "eurhmap":
+                vgFilePath = "Europehmap.vg";
+                break;
+              default:
+                vgFilePath = "NAhmap.vg";
+            }
+          }
+          // Inside your switch statement
+          console.log("vgFilePath:", vgFilePath);
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+          const chartSelector = document.getElementById("chartSelector");
+          const selectedChart = document.getElementById("selectedChart");
+          const chartDescription = document.getElementById("chart-desc");
+          const chartDescription1 = document.getElementById("chart-desc");
+
+          chartSelector.value = "bar1";
+          chartSelector.dispatchEvent(new Event("change"));
+
+          chartSelector.addEventListener("change", function () {
+            const selectedValue = chartSelector.value;
+            let vgFilePath;
+
+            switch (selectedValue) {
+              case "bar1":
+                vgFilePath = "barchart1.vg";
+                chartDescription.textContent =
+                  "Now, let's turn our gaze to the paramount metro systems, ranked by annual ridership. This ranking offers a glimpse into cities with the most bustling metro networks, complemented by insights into their respective regions.";
+                break;
+              case "bar2":
+                vgFilePath = "barchart2.vg";
+                chartDescription.textContent =
+                  "Lets traverse the globe to showcase the longest metro systems based on kilometers of track. This segment invites you to compare the five most extensive metro networks globally and their associated regions.";
+                break;
+              case "bar3":
+                vgFilePath = "barchart3.vg";
+                chartDescription.textContent =
+                  "Our focus sharpens on the number of stations within metro systems, presenting the top five networks with the most station counts and offering a snapshot of their respective regions.";
+                break;
+              default:
+                vgFilePath = null;
+                chartDescription.textContent = "Select a chart to display.";
+            }
+
+            if (vgFilePath) {
+              vegaEmbed(selectedChart, vgFilePath)
+                .then(function (result) {
+                  // Access the Vega view instance as result.view
+                })
+                .catch(console.error);
+            } else {
+              selectedChart.innerHTML = "Select a chart to display.";
+            }
+            chartDescription.style.fontFamily = "Times New Roman, sans-serif";
+            chartDescription.style.fontSize = "18px";
+            chartDescription.style.fontStyle = "normal";
+          });
+        });
+
+        var vg_1 = "Mapass2.vg";
+        vegaEmbed("#map", vg_1)
+          .then(function (result) {
+            // Access the Vega view instance
+            //(https://vega.github.io/vega/docs/api/view/) as result.view
+          })
+          .catch(console.error);
+
+        var vg_7 = "donutchart.vg";
+
+        vegaEmbed("#donut", vg_7)
+          .then(function (result) {
+            // Access the Vega view instance
+            //(https://vega.github.io/vega/docs/api/view/) as result.view
+          })
+          .catch(console.error);
+      </script>
+    </main>
+  </body>
+</html>
